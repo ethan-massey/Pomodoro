@@ -4,10 +4,6 @@ import { Link } from "react-router-dom";
 import firebase from "./Firebase";
 
 class CreateAccount extends Component {
-  state = {
-    init: false
-  };
-
   handleSignUp = async event => {
     event.preventDefault();
     const { email, password } = event.target.elements;
