@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router";
-import firebase from "./Firebase";
 // import './Login.css';
 
-class Login extends Component {
+class Home extends Component {
   handleSignUp = () => {};
 
   render() {
@@ -20,4 +18,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default Home;
