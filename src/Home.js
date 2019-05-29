@@ -4,14 +4,6 @@ import { Link } from "react-router-dom";
 // import './Login.css';
 
 class Home extends Component {
-  handleSignUp = () => {};
-
-  click() {
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword("ethan@apple.com", "password");
-  }
-
   render() {
     return (
       <div className="Login">
