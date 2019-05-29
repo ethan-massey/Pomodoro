@@ -12,7 +12,7 @@ class Login extends Component {
       const user = await firebase
         .auth()
         .signInWithEmailAndPassword(email.value, password.value);
-      this.props.history.push("/");
+      this.props.history.push("/Profile");
     } catch (error) {
       alert("Username or passord is incorrect");
     }
