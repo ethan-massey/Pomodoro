@@ -36,6 +36,10 @@ class CreateAccount extends Component {
             <Link to="/Profile">Sign up</Link>
           </button>
         </form>
+        <br />
+        <button>
+          <Link to="/">Back</Link>
+        </button>
       </div>
     );
   }
