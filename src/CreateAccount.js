@@ -4,16 +4,18 @@ import firebase from "./Firebase";
 
 class CreateAccount extends Component {
   handleSignUp = async event => {
-    // event.preventDefault();
-    // const { email, password } = event.target.elements;
-    // try {
-    //   const user = await firebase
-    //     .auth()
-    //     .createUserWithEmailAndPassword(email, password);
-    //   this.props.history.push("/");
-    // } catch (error) {
-    //   alert(error);
-    // }
+    event.preventDefault();
+    const { email, password } = event.target.elements;
+    console.log(email.value);
+    console.log(password.value);
+    try {
+      const user = await firebase
+        .auth()
+        .createUserWithEmailAndPassword(email.value, password.value);
+      this.props.history.push("/");
+    } catch (error) {
+      alert(error);
+    }
   };
 
   render() {
