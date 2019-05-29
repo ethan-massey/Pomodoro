@@ -27,11 +27,11 @@ class NewTask extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      seconds: "03",
-      minutes: "01",
+      seconds: "00",
+      minutes: "25",
       on: false,
       breakSeconds: "00",
-      breakMinutes: "01",
+      breakMinutes: "05",
       breakTime: false,
       userId: firebase.auth().currentUser
     };
