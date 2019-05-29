@@ -4,7 +4,6 @@ import './App.css';
 import { Input } from 'antd';
 import Timer from "./Timer";
 import StartButton from "./StartButton";
-import DateAndTime from "./DateAndTime"
 
 const { TextArea } = Input;
 

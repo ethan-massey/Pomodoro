@@ -7,7 +7,9 @@ class Profile extends Component {
         return (
             <div>
                 <MenuBar />
-                Profile
+                Profile <br/>
+                Completed Tasks <br />
+                This will be a list of tasks that were completed. When the finished task button is clicked, the list will be added to and rerendered here.
             </div>
         );
     }

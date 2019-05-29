@@ -8,7 +8,8 @@ class Help extends Component {
             <div>
                 <MenuBar />
                 Help <br/>
-                -insert info here-
+                FAQ <br/>
+                What is the Pomodoro Technique? -> insert Link <br/>
             </div>
         );
     }
