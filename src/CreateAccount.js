@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 import firebase from "./Firebase";
 
 class CreateAccount extends Component {
+  state = {
+    init: false
+  };
+
   handleSignUp = async event => {
     event.preventDefault();
     const { email, password } = event.target.elements;
@@ -17,6 +21,9 @@ class CreateAccount extends Component {
     } catch (error) {
       alert(error);
     }
+    this.setState({
+      init: true
+    });
   };
 
   render() {
@@ -33,7 +40,8 @@ class CreateAccount extends Component {
             <input name="password" type="password" placeholder="Password" />
           </label>
           <button type="submit">
-            <Link to="/Profile">Sign up</Link>
+            Sign up
+            {this.state.init ? <Link to="/Profile" /> : null}
           </button>
         </form>
         <br />
