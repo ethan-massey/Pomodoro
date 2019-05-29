@@ -33,8 +33,7 @@ class CreateAccount extends Component {
             <input name="password" type="password" placeholder="Password" />
           </label>
           <button type="submit">
-            <Link to="/Profile" />
-            Sign up
+            <Link to="/Profile">Sign up</Link>
           </button>
         </form>
       </div>
