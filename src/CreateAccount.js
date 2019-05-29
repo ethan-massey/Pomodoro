@@ -12,6 +12,7 @@ class CreateAccount extends Component {
         .auth()
         .createUserWithEmailAndPassword(email.value, password.value);
       this.props.history.push("/Profile");
+      console.log(this.props.history);
     } catch (error) {
       alert(error);
     }
