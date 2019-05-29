@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import MenuBar from "./MenuBar";
 import './App.css';
 
-class Profile extends Component {
+class LeaderBoards extends Component {
     render() {
         return (
             <div>
                 <MenuBar />
-                Profile
+                Leader Boards
             </div>
         );
     }
 }
-export default Profile;
+export default LeaderBoards;

@@ -19,6 +19,11 @@ class MenuBar extends React.Component {
           New Task
           </Link>
         </Menu.Item>
+        <Menu.Item key="LeaderBoards">
+          <Link to= "/LeaderBoards">
+          Leader Boards
+          </Link>
+        </Menu.Item>
         <Menu.Item key="Help">
           <Link to= "/Help">
             Help
