@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router";
 import firebase from "./Firebase";
 import { Link } from "react-router-dom";
+import "./App.css";
 
 class Login extends Component {
   handleLogin = async event => {

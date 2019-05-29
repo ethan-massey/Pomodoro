@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import MenuBar from "./MenuBar";
-import './App.css';
+import "./App.css";
 
 class LeaderBoards extends Component {
-    render() {
-        return (
-            <div>
-                <MenuBar />
-                Leader Boards
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div>
+        <MenuBar />
+        <h1>LeaderBoards</h1>
+      </div>
+    );
+  }
 }
 export default LeaderBoards;
