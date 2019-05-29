@@ -5,6 +5,7 @@ import { Input } from 'antd';
 import Timer from "./Timer";
 import StartButton from "./StartButton";
 
+const { TextArea } = Input;
 
 class NewTask extends Component {
     constructor(props){
@@ -41,7 +42,7 @@ class NewTask extends Component {
         }
 
         if (min === 0 & sec === 0) {
-            clearInterval(this.internalHandle);
+            clearInterval(this.intervalHandle);
         }
 
         this.secondsRemaining--
@@ -66,7 +67,7 @@ class NewTask extends Component {
                 New Task <br/>
                 <Timer minutes = {this.state.minutes} seconds= {this.state.seconds}/> 
                 <StartButton start = {this.startCountdown}/>
-                Task Description <Input placeholder="Write Description"/>
+                Task Description <TextArea rows={4} />
             </div>
         );
     }
