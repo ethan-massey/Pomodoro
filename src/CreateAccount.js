@@ -7,13 +7,11 @@ class CreateAccount extends Component {
   handleSignUp = async event => {
     event.preventDefault();
     const { email, password } = event.target.elements;
-    console.log(email.value);
-    console.log(password.value);
     try {
       const user = await firebase
         .auth()
         .createUserWithEmailAndPassword(email.value, password.value);
-      this.props.history.push("/");
+      this.props.history.push("/Profile");
     } catch (error) {
       alert(error);
     }
@@ -32,10 +30,12 @@ class CreateAccount extends Component {
             Password
             <input name="password" type="password" placeholder="Password" />
           </label>
-          <button type="submit">
-            <Link to="/Profile">Sign up</Link>
-          </button>
+          <button type="submit">Sign up</button>
         </form>
+        <br />
+        <button>
+          <Link to="/">Back</Link>
+        </button>
       </div>
     );
   }
