@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router";
+import { Link } from "react-router-dom";
 import firebase from "./Firebase";
 
 class CreateAccount extends Component {
@@ -31,7 +32,10 @@ class CreateAccount extends Component {
             Password
             <input name="password" type="password" placeholder="Password" />
           </label>
-          <button type="submit">Sign up</button>
+          <button type="submit">
+            <Link to="/Profile" />
+            Sign up
+          </button>
         </form>
       </div>
     );
