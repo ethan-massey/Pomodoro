@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import MenuBar from "./MenuBar";
 import './App.css';
+import { Input } from 'antd';
+import Timer from "./Timer";
+
 
 class NewTask extends Component {
     render() {
@@ -8,7 +11,8 @@ class NewTask extends Component {
             <div>
                 <MenuBar />
                 New Task <br/>
-                -insert new task stuff here, ie timer, info, etc.-
+                <Timer /> 
+                Task Description <Input placeholder="Write Description"/>
             </div>
         );
     }
