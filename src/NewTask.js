@@ -67,18 +67,6 @@ class NewTask extends Component {
     this.secondsRemaining--;
   }
 
-  //   startCountdown() {
-  //     if (this.state.on === false) {
-  //       this.intervalHandle = setInterval(this.tick, 1000);
-  //       let time = this.state.minutes;
-  //       this.secondsRemaining = time * 60;
-  //       this.setState({
-  //         on: true,
-  //         breakTime: false
-  //       });
-  //     }
-  //   }
-
   startCountdown() {
     this.setState({
       breakTime: false
@@ -98,16 +86,6 @@ class NewTask extends Component {
     clearInterval(this.intervalHandle);
   }
 
-  //   startBreak() {
-  //     this.intervalHandle = setInterval(this.tick, 1000);
-  //     let time = this.state.breakMinutes;
-  //     this.secondsRemaining = time * 60;
-  //     this.setState({
-  //       breakTime: true,
-  //       on: false
-  //     });
-  //   }
-
   startBreak() {
     this.setState({
       breakTime: true
@@ -122,11 +100,16 @@ class NewTask extends Component {
     return (
       <div>
         <MenuBar />
-        New Task <br />
+        <h1>New Pomodoro Task</h1>
+        <br />
         <Timer minutes={this.state.minutes} seconds={this.state.seconds} />
         <StartButton start={this.startCountdown} />
-        <button onClick={this.stopCountdown}>Stop</button>
-        Task Description <TextArea rows={4} />
+        <button onClick={this.stopCountdown}>Finished with Task</button>
+        <br />
+        Title: <input />
+        <br />
+        Details: <input />
+        <br />
         <br />
         {/* <Timer
           minutes={this.state.breakMinutes}
