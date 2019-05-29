@@ -4,8 +4,24 @@ import "./App.css";
 import { Input } from "antd";
 import Timer from "./Timer";
 import StartButton from "./StartButton";
+import firebase from "./Firebase.js";
 
-const { TextArea } = Input;
+// const { TextArea } = Input;
+
+var tempDate = new Date();
+var date =
+  tempDate.getFullYear() +
+  "-" +
+  (tempDate.getMonth() + 1) +
+  "-" +
+  tempDate.getDate() +
+  " " +
+  tempDate.getHours() +
+  ":" +
+  tempDate.getMinutes() +
+  ":" +
+  tempDate.getSeconds();
+const currDate = "Current Date= " + date;
 
 class NewTask extends Component {
   constructor(props) {
@@ -16,7 +32,8 @@ class NewTask extends Component {
       on: false,
       breakSeconds: "00",
       breakMinutes: "01",
-      breakTime: false // originally false
+      breakTime: false,
+      userId: firebase.auth().currentUser
     };
 
     this.startCountdown = this.startCountdown.bind(this);
@@ -96,6 +113,18 @@ class NewTask extends Component {
     console.log(this.state.breakTime);
   }
 
+  //   handleClick = () => {
+  //     const statsRef = firebase.database().ref("users/" + this.state.userId);
+  //     const taskdets = {
+  //       taskTitle: this.state.name,
+  //       taskDetails: this.state.details,
+  //       taskDate: currDate
+  //     };
+  //     statsRef.push(taskdets);
+  //     // this.props.updateList();
+  //     // console.log(this.state.name);
+  //   };
+
   render() {
     return (
       <div>
@@ -104,17 +133,15 @@ class NewTask extends Component {
         <br />
         <Timer minutes={this.state.minutes} seconds={this.state.seconds} />
         <StartButton start={this.startCountdown} />
-        <button onClick={this.stopCountdown}>Finished with Task</button>
+        <button onClick={this.stopCountdown} onClick={() => this.handleClick()}>
+          Finished with Task
+        </button>
         <br />
         Title: <input />
         <br />
         Details: <input />
         <br />
         <br />
-        {/* <Timer
-          minutes={this.state.breakMinutes}
-          seconds={this.state.breakSeconds}
-        /> */}
       </div>
     );
   }
