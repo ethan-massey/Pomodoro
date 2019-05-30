@@ -7,12 +7,8 @@ import StartButton from "./StartButton";
 import firebase from "./Firebase.js";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
-import Fab from "@material-ui/core/Fab";
-import IconButton from "@material-ui/core/IconButton";
-import AddIcon from "@material-ui/icons/Add";
-import DeleteIcon from "@material-ui/icons/Delete";
-import NavigationIcon from "@material-ui/icons/Navigation";
-import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
+import { Link } from "react-router-dom";
+import { withRouter } from "react-router";
 
 const useStyles = makeStyles(theme => ({
   margin: {
@@ -50,9 +46,11 @@ class NewTask extends Component {
       breakTime: false,
       userId: firebase.auth().currentUser,
       title: "",
-      details: ""
+      details: "",
+      initialStart: false
     };
 
+    this.startInitialCountdown = this.startInitialCountdown.bind(this);
     this.startCountdown = this.startCountdown.bind(this);
     this.tick = this.tick.bind(this);
     this.stopCountdown = this.stopCountdown.bind(this);
@@ -84,7 +82,7 @@ class NewTask extends Component {
     }
 
     if ((min === 0) & (sec === 0)) {
-      clearInterval(this.intervalHandle); // if break startBreak else startCountdown
+      clearInterval(this.intervalHandle);
       if (this.state.breakTime) {
         // console.log("starting countdown");
         this.setState({
@@ -106,7 +104,9 @@ class NewTask extends Component {
   }
 
   startCountdown() {
-    console.log(this.state.on);
+    console.log("fuck me");
+    // console.log(this.state.on);
+    // this.disableButton();
     // if (this.state.on) {
     this.setState({
       breakTime: false,
@@ -118,6 +118,28 @@ class NewTask extends Component {
     let time = this.state.minutes;
     this.secondsRemaining = time * 60;
     // }
+  }
+
+  startInitialCountdown() {
+    console.log("initial start");
+    if (this.state.initialStart === false) {
+      // console.log(this.state.on);
+      console.log("yo" + this.state.initialStart);
+      // this.disableButton();
+      // if (this.state.on) {
+      this.setState({
+        breakTime: false,
+        on: true,
+        initialStart: true
+      });
+      console.log("yoyo" + this.state.initialStart);
+      //   console.log("startCountdown");
+      //   console.log(this.state.breakTime);
+      this.intervalHandle = setInterval(this.tick, 1000);
+      let time = this.state.minutes;
+      this.secondsRemaining = time * 60;
+      // }
+    }
   }
 
   stopCountdown() {
@@ -203,7 +225,7 @@ class NewTask extends Component {
         </div>
         <Timer minutes={this.state.minutes} seconds={this.state.seconds} />
         <div class="mybutton">
-          <StartButton start={this.startCountdown} />
+          <StartButton start={this.startInitialCountdown} id="startb" />
         </div>
         <br />
         <div class="mybutton">
@@ -248,6 +270,11 @@ class NewTask extends Component {
           <div class="shia">
             <img src={require("./shia.gif")} />
           </div>
+          <Button variant="contained" size="large" color="primary">
+            {/* <Link to="/Profile" class="toonLink">
+              Back to Profile
+            </Link> */}
+          </Button>
         </div>
       </div>
     );
