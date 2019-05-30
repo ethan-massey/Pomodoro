@@ -87,3 +87,31 @@ h6 {
 .shia {
   text-align: center;
 }
+
+.profileHead {
+  font-size: 80px;
+}
+
+.user {
+  text-align: right;
+  margin-right: 20px;
+}
+
+.user :hover {
+  color: #76ead6;
+}
+.homePageButtons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+}
