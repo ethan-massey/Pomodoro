@@ -42,6 +42,7 @@ class NewTask extends Component {
     this.tick = this.tick.bind(this);
     this.stopCountdown = this.stopCountdown.bind(this);
     this.startBreak = this.startBreak.bind(this);
+    this.resumeCountdown = this.resumeCountdown.bind(this);
   }
 
   tick() {
@@ -111,6 +112,17 @@ class NewTask extends Component {
     });
     clearInterval(this.intervalHandle);
     console.log(this.state.on);
+  }
+
+  resumeCountdown() {
+    this.setState({
+      breakTime: false,
+      on: true
+    });
+    //   console.log("startCountdown");
+    //   console.log(this.state.breakTime);
+    this.intervalHandle = setInterval(this.tick, 1000);
+    // }
   }
 
   startBreak() {
@@ -186,7 +198,7 @@ class NewTask extends Component {
           <button class="buttonBar" onClick={this.stopCountdown}>
             Pause
           </button>
-          <button onClick={this.startCountdown}>Resume</button>
+          <button onClick={this.resumeCountdown}>Resume</button>
         </div>
         <br />
         <div class="mybutton">
