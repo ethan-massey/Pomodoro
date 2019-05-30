@@ -87,3 +87,16 @@ h6 {
 .shia {
   text-align: center;
 }
+
+.profileHead {
+  font-size: 80px;
+}
+
+.user {
+  text-align: right;
+  margin-right: 20px;
+}
+
+.user :hover {
+  color: #76ead6;
+}

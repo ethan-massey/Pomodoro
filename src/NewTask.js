@@ -73,15 +73,15 @@ class NewTask extends Component {
       if (this.state.breakTime) {
         // console.log("starting countdown");
         this.setState({
-          seconds: "03",
-          minutes: "01"
+          seconds: "00",
+          minutes: "25"
         });
         this.startCountdown();
       } else {
         // console.log("starting break");
         this.setState({
           breakSeconds: "00",
-          breakMinutes: "01"
+          breakMinutes: "05"
         });
         this.startBreak();
       }
