@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import MenuBar from "./MenuBar";
 import firebase from "./Firebase";
-import axios from "axios";
 import "./App.css";
 
 class LeaderBoards extends Component {
@@ -20,7 +19,6 @@ class LeaderBoards extends Component {
 
   componentDidMount() {
     const usersRef = firebase.database().ref("users");
-    axios.get("https://pomodoro-c0076.firebaseio.com/");
 
     usersRef.on("value", function(snapshot) {
       console.log(snapshot.val());
@@ -44,7 +42,7 @@ class LeaderBoards extends Component {
     return (
       <div>
         <MenuBar />
-        <h1>LeaderBoard</h1>
+        <h6>LeaderBoard</h6>
         <h2>{sortedUsers}</h2>
       </div>
     );
