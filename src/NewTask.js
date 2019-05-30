@@ -5,8 +5,23 @@ import { Input } from "antd";
 import Timer from "./Timer";
 import StartButton from "./StartButton";
 import firebase from "./Firebase.js";
+import Button from "@material-ui/core/Button";
+import { makeStyles } from "@material-ui/core/styles";
+import Fab from "@material-ui/core/Fab";
+import IconButton from "@material-ui/core/IconButton";
+import AddIcon from "@material-ui/icons/Add";
+import DeleteIcon from "@material-ui/icons/Delete";
+import NavigationIcon from "@material-ui/icons/Navigation";
+import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 
-// const { TextArea } = Input;
+const useStyles = makeStyles(theme => ({
+  margin: {
+    margin: theme.spacing(1)
+  },
+  extendedIcon: {
+    marginRight: theme.spacing(1)
+  }
+}));
 
 var tempDate = new Date();
 var date =
@@ -195,19 +210,39 @@ class NewTask extends Component {
         </div>
         <br />
         <div class="mybutton">
+          <Button
+            onClick={this.stopCountdown}
+            variant="contained"
+            size="large"
+            color="primary"
+          >
+            Pause
+          </Button>
+          <Button
+            onClick={this.resumeCountdown}
+            variant="contained"
+            size="large"
+            color="primary"
+          >
+            Resume
+          </Button>
+        </div>
+        {/* <div class="mybutton">
           <button class="buttonBar" onClick={this.stopCountdown}>
             Pause
           </button>
           <button onClick={this.resumeCountdown}>Resume</button>
-        </div>
+        </div> */}
         <br />
         <div class="mybutton">
-          <button
-            //   onClick={() => this.stopCountdown()}
-            onClick={() => this.handleClick()}
+          <Button
+            onClick={this.handleClick}
+            variant="contained"
+            size="large"
+            color="primary"
           >
-            Finished with Task
-          </button>
+            Finish and Submit Job
+          </Button>
         </div>
         <br />
         <div id="congrats" />

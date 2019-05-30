@@ -69,7 +69,8 @@ h6 {
 }
 
 .mybutton {
-  text-align: center;
+  display: flex;
+  justify-content: space-around;
 }
 
 .taskinp {
@@ -114,4 +115,9 @@ h6 {
   align-items: center;
   justify-content: center;
   font-size: 25px;
+}
+
+.toonLink {
+  color: white;
+  text-decoration: none;
 }
