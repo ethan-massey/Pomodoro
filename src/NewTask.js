@@ -113,17 +113,17 @@ class NewTask extends Component {
     console.log(this.state.breakTime);
   }
 
-  // handleClick = () => {
-  //   const statsRef = firebase.database().ref("users/" + this.state.userId);
-  //   const taskdets = {
-  //     taskTitle: this.state.name,
-  //     taskDetails: this.state.details,
-  //     taskDate: currDate
-  //   };
-  //   statsRef.push(taskdets);
-  //   // this.props.updateList();
-  //   // console.log(this.state.name);
-  // };
+  handleClick = () => {
+    const statsRef = firebase.database().ref("users/" + this.state.userId);
+    const taskdets = {
+      taskTitle: "dummy title",
+      taskDetails: "dummy folder",
+      taskDate: currDate
+    };
+    statsRef.push(taskdets);
+    // this.props.updateList();
+    // console.log(this.state.name);
+  };
 
   render() {
     return (
