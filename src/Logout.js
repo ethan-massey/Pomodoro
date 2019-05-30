@@ -1,6 +1,7 @@
 import React from "react";
+import { withRouter } from "react-router";
+import firebase from "./Firebase";
 import "./App.css";
-import firebase from "./Firebase"
 
 class Logout extends React.Component {
     handleLogout = async event => {

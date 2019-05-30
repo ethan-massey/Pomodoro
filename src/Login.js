@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import "./App.css";
 
 class Login extends Component {
-  
+
   handleLogin = async event => {
     event.preventDefault();
     const { email, password } = event.target.elements;

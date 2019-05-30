@@ -30,35 +30,39 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const handleLogout = async event => {
-  event.preventDefault();
-  try {
-    const user = await firebase
-      .auth()
-      .signOut();
-    this.props.history.push("/");
-  }
-  catch (error) {
-      alert(error);
-  }
-}
 
 
-function MenuBar() {
-  const classes = useStyles();
-  return (
-    <div className={classes.root}>
+class MenuBar extends React.Component {
+
+  classes = useStyles;
+
+  handleLogout = async event => {
+    event.preventDefault();
+    try {
+      const user = await firebase
+        .auth()
+        .signOut();
+      this.props.history.push("/");
+    }
+    catch (error) {
+        alert(error);
+    }
+  }
+
+  render(){
+    return (
+    <div className={this.classes.root}>
       <AppBar position="static">
         <Toolbar>
           <IconButton
             edge="start"
-            className={classes.menuButton}
+            className={this.classes.menuButton}
             color="inherit"
             aria-label="Menu"
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" className={classes.title}>
+          <Typography variant="h6" className={this.classes.title}>
             Pomodoro
           </Typography>
           <Button color="inherit">
@@ -73,13 +77,14 @@ function MenuBar() {
           <Button color="inherit">
             <Link to="/Help">Help</Link>
           </Button>
-          <Button color="inherit" onClick={handleLogout}>
+          <Button color="inherit" onClick={this.handleLogout}>
             Logout
           </Button>
         </Toolbar>
       </AppBar>
     </div>
   );
+}
 }
 
 export default withRouter(MenuBar);
