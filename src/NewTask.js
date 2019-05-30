@@ -190,7 +190,7 @@ class NewTask extends Component {
     return (
       <div>
         <MenuBar />
-        <h1>New Pomodoro Task</h1>
+        <h1 class="timerHead">New Pomodoro Task</h1>
         <br />
         <div class="taskinp">
           Title:{" "}
@@ -201,9 +201,6 @@ class NewTask extends Component {
           Details:{" "}
           <input onChange={e => this.setState({ details: e.target.value })} />
         </div>
-        <br />
-        <br />
-        <br />
         <Timer minutes={this.state.minutes} seconds={this.state.seconds} />
         <div class="mybutton">
           <StartButton start={this.startCountdown} />

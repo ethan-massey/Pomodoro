@@ -117,7 +117,15 @@ h6 {
   font-size: 25px;
 }
 
+.loginHead {
+  font-size: 100px;
+}
+
 .toonLink {
   color: white;
   text-decoration: none;
+}
+
+.timerHead {
+  font-size: 80px;
 }
