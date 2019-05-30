@@ -51,6 +51,22 @@ h1 {
     2px 2px 0 #000;
 }
 
-button {
+.mybutton {
+  text-align: center;
+}
+
+.taskinp {
+  text-align: center;
+}
+
+.buttonBar {
+  margin-right: 10px;
+}
+
+.hiddenDiv {
+  display: none;
+}
+
+.shia {
   text-align: center;
 }
