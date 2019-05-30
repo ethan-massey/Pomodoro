@@ -116,8 +116,8 @@ class NewTask extends Component {
   handleClick = () => {
     const statsRef = firebase.database().ref("users/" + this.state.userId);
     const taskdets = {
-      taskTitle: this.state.name,
-      taskDetails: this.state.details,
+      taskTitle: "dummy title",
+      taskDetails: "dummy folder",
       taskDate: currDate
     };
     statsRef.push(taskdets);
