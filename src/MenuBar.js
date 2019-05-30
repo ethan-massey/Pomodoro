@@ -2,6 +2,7 @@
 import firebase from "./Firebase"
 import "./App.css";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router";
 
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
@@ -32,9 +33,10 @@ const useStyles = makeStyles(theme => ({
 const handleLogout = async event => {
   event.preventDefault();
   try {
-      const user = await firebase
+    const user = await firebase
       .auth()
-      .signOut().then(this.props.history.push("/"))
+      .signOut();
+    this.props.history.push("/");
   }
   catch (error) {
       alert(error);
@@ -71,7 +73,7 @@ function MenuBar() {
           <Button color="inherit">
             <Link to="/Help">Help</Link>
           </Button>
-          <Button color="inherit" onClick={handleLogout()}>
+          <Button color="inherit" onClick={handleLogout}>
             Logout
           </Button>
         </Toolbar>
@@ -80,4 +82,4 @@ function MenuBar() {
   );
 }
 
-export default MenuBar;
+export default withRouter(MenuBar);
