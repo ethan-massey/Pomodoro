@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import MenuBar from "./MenuBar";
 import firebase from "./Firebase";
 import "./App.css";
+import { func } from "prop-types";
 
 class LeaderBoards extends Component {
   constructor(props) {
@@ -18,17 +19,29 @@ class LeaderBoards extends Component {
   }
 
   componentDidMount() {
+    this.readFire();
+  }
+
+  readFire = () => {
     const usersRef = firebase.database().ref("users");
+    let trash = [];
+    // trash.push(1);
 
     usersRef.on("value", function(snapshot) {
-      console.log(snapshot.val());
-      for (var i = 0; i < snapshot.val().length; i++) {
-        console.log("hi");
-      }
-
-      // console.log(snapshot.val());
+      // trash = [];
+      trash.push(1);
+      snapshot.forEach(function(childSnapshot) {
+        console.log("pushing to trash");
+        trash.push("fuck me");
+        console.log(childSnapshot.val());
+      });
     });
-  }
+    this.setState({
+      users: trash
+    });
+    console.log("TRASH");
+    console.log(trash);
+  };
 
   render() {
     let sortedUsers = this.state.sortedUsers.map(user => {
