@@ -2,20 +2,12 @@ import React, { Component } from "react";
 import MenuBar from "./MenuBar";
 import firebase from "./Firebase";
 import "./App.css";
-import { func } from "prop-types";
+
+const appUsers = [];
 
 class LeaderBoards extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      // {name: foo, totalTasks: foo}
-      users: [],
-      sortedUsers: [
-        { name: "Ethan", totalTasks: 53 },
-        { name: "Mike", totalTasks: 43 },
-        { name: "John", totalTasks: 35 }
-      ]
-    };
   }
 
   componentDidMount() {
@@ -23,40 +15,35 @@ class LeaderBoards extends Component {
   }
 
   readFire = () => {
+    let users = [];
     const usersRef = firebase.database().ref("users");
-    let trash = [];
-    // trash.push(1);
 
     usersRef.on("value", function(snapshot) {
-      // trash = [];
-      trash.push(1);
       snapshot.forEach(function(childSnapshot) {
-        console.log("pushing to trash");
-        trash.push("fuck me");
-        console.log(childSnapshot.val());
+        users.push(childSnapshot.val());
       });
+
+      // for user in users
+      for (var i in users) {
+        // for task in completed tasks
+        appUsers.push({ name: Object.getOwnPropertyNames(snapshot.val())[i] });
+        let tasks = 0;
+        for (var task in users[i].completedTasks) {
+          tasks++;
+        }
+        appUsers[i].numTasks = tasks;
+
+        console.log(appUsers);
+      }
     });
-    this.setState({
-      users: trash
-    });
-    console.log("TRASH");
-    console.log(trash);
   };
 
   render() {
-    let sortedUsers = this.state.sortedUsers.map(user => {
-      return (
-        <ol>
-          {user.name}
-          {user.totalTasks}
-        </ol>
-      );
-    });
     return (
       <div>
         <MenuBar />
         <h6>LeaderBoard</h6>
-        <h2>{sortedUsers}</h2>
+        <h2 />
       </div>
     );
   }

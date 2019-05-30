@@ -4,8 +4,30 @@ import firebase from "./Firebase";
 import { Link } from "react-router-dom";
 import "./App.css";
 
-class Login extends Component {
+import { makeStyles } from '@material-ui/core/styles';
+import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button'
 
+const useStyles = makeStyles(theme => ({
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  textField: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+  },
+  dense: {
+    marginTop: theme.spacing(2),
+  },
+  menu: {
+    width: 200,
+  },
+}));
+
+class Login extends Component {
+  classes = useStyles;
   handleLogin = async event => {
     event.preventDefault();
     const { email, password } = event.target.elements;
@@ -23,21 +45,32 @@ class Login extends Component {
     return (
       <div>
         <h1>Log in to Pomodoro</h1>
-        <form onSubmit={this.handleLogin}>
-          <label>
-            Email
-            <input name="email" type="email" placeholder="Email" />
-          </label>
-          <label>
-            Password
-            <input name="password" type="password" placeholder="Password" />
-          </label>
-          <button type="submit">Log in</button>
-        </form>
-        <br />
-        <button>
+        <form class="login" className={this.classes.container} noValidate autoComplete="off" onSubmit={this.handleLogin}>
+      <TextField
+        id="outlined-name"
+        name="email"
+        label="Email"
+        type="email"
+        className={this.classes.textField}
+        margin="normal"
+        variant="outlined"
+      />
+            <TextField
+        id="outlined-name"
+        name="password"
+        label="Password"
+        type="password"
+        className={this.classes.textField}
+        margin="normal"
+        variant="outlined"
+      />
+      <Button type="submit">Log in</Button>
+      </form>
+      <div class="login">
+        <Button>
           <Link to="/">Back</Link>
-        </button>
+        </Button>
+      </div>
       </div>
     );
   }
