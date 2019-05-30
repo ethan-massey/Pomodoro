@@ -1,6 +1,9 @@
+body {
+  background-image: linear-gradient(to right, #74ebd5 0%, #9face6 100%);
+}
+
 .App {
   text-align: center;
-  background-image: linear-gradient(to right, #74ebd5 0%, #9face6 100%);
 }
 
 .App-logo {
@@ -31,4 +34,56 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* a {
+  color: white;
+} */
+
+h6 {
+  color: white;
+}
+
+h1 {
+  text-align: center;
+  font-size: 40px;
+  color: whitesmoke;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    2px 2px 0 #000;
+}
+
+h2 {
+  text-align: center;
+  font-size: 40px;
+  color: whitesmoke;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    2px 2px 0 #000;
+}
+
+h6 {
+  text-align: center;
+  font-size: 65px;
+  color: whitesmoke;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    2px 2px 0 #000;
+}
+
+.mybutton {
+  text-align: center;
+}
+
+.taskinp {
+  text-align: center;
+}
+
+.buttonBar {
+  margin-right: 10px;
+}
+
+.hiddenDiv {
+  display: none;
+}
+
+.shia {
+  text-align: center;
 }
