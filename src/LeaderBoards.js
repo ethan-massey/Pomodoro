@@ -8,11 +8,6 @@ const appUsers = [];
 class LeaderBoards extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      // {name: foo, totalTasks: foo}
-      users: [],
-      sortedUsers: []
-    };
   }
 
   componentDidMount() {
@@ -28,7 +23,6 @@ class LeaderBoards extends Component {
         users.push(childSnapshot.val());
       });
 
-      console.log(Object.getOwnPropertyNames(snapshot.val())[0]);
       // for user in users
       for (var i in users) {
         // for task in completed tasks
@@ -45,19 +39,11 @@ class LeaderBoards extends Component {
   };
 
   render() {
-    let sortedUsers = this.state.sortedUsers.map(user => {
-      return (
-        <ol>
-          {user.name}
-          {user.totalTasks}
-        </ol>
-      );
-    });
     return (
       <div>
         <MenuBar />
         <h6>LeaderBoard</h6>
-        <h2>{sortedUsers}</h2>
+        <h2 />
       </div>
     );
   }
