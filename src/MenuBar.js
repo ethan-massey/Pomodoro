@@ -1,5 +1,5 @@
 //import { Menu } from 'antd';
-import firebase from "./Firebase"
+import firebase from "./Firebase";
 import "./App.css";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
@@ -30,61 +30,55 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-
-
 class MenuBar extends React.Component {
-
   classes = useStyles;
 
   handleLogout = async event => {
     event.preventDefault();
     try {
-      const user = await firebase
-        .auth()
-        .signOut();
+      const user = await firebase.auth().signOut();
       this.props.history.push("/");
+    } catch (error) {
+      alert(error);
     }
-    catch (error) {
-        alert(error);
-    }
-  }
+  };
 
-  render(){
+  render() {
     return (
-    <div className={this.classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className={this.classes.menuButton}
-            color="inherit"
-            aria-label="Menu"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={this.classes.title}>
-            Pomodoro
-          </Typography>
-          <Button color="inherit">
-            <Link to="/Profile">Profile</Link>
-          </Button>
-          <Button color="inherit">
-            <Link to="/NewTask">New Task</Link>
-          </Button>
-          <Button color="inherit">
-            <Link to="/LeaderBoards">Leader Boards</Link>
-          </Button>
-          <Button color="inherit">
-            <Link to="/Help">Help</Link>
-          </Button>
-          <Button color="inherit" onClick={this.handleLogout}>
-            Logout
-          </Button>
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
-}
+      <div className={this.classes.root}>
+        <AppBar position="static">
+          <Toolbar>
+            <IconButton
+              edge="start"
+              className={this.classes.menuButton}
+              color="inherit"
+              aria-label="Menu"
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="h6" className={this.classes.title}>
+              Pomodoro
+            </Typography>
+            <Button color="inherit">
+              <Link to="/Profile">Profile</Link>
+            </Button>
+            <Button color="inherit">
+              <Link to="/NewTask">New Task</Link>
+            </Button>
+            <Button color="inherit">
+              <Link to="/LeaderBoards">Leader Boards</Link>
+            </Button>
+            <Button color="inherit">
+              <Link to="/Help">Help</Link>
+            </Button>
+            <Button color="inherit" onClick={this.handleLogout}>
+              Logout
+            </Button>
+          </Toolbar>
+        </AppBar>
+      </div>
+    );
+  }
 }
 
 export default withRouter(MenuBar);
