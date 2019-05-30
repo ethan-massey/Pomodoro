@@ -1,4 +1,5 @@
 //import { Menu } from 'antd';
+import firebase from "./Firebase"
 import "./App.css";
 import { Link } from "react-router-dom";
 
@@ -28,6 +29,19 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+const handleLogout = async event => {
+  event.preventDefault();
+  try {
+      const user = await firebase
+      .auth()
+      .signOut().then(this.props.history.push("/"))
+  }
+  catch (error) {
+      alert(error);
+  }
+}
+
+
 function MenuBar() {
   const classes = useStyles();
   return (
@@ -56,6 +70,9 @@ function MenuBar() {
           </Button>
           <Button color="inherit">
             <Link to="/Help">Help</Link>
+          </Button>
+          <Button color="inherit" onClick={handleLogout()}>
+            Logout
           </Button>
         </Toolbar>
       </AppBar>
