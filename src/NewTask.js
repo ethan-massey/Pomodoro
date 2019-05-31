@@ -10,6 +10,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
 import axios from "axios";
+import TextField from "@material-ui/core/TextField";
 
 const useStyles = makeStyles(theme => ({
   margin: {
@@ -36,6 +37,7 @@ var date =
 const currDate = "Current Date= " + date;
 
 class NewTask extends Component {
+  classes = useStyles;
   constructor(props) {
     super(props);
     this.state = {
@@ -237,13 +239,27 @@ class NewTask extends Component {
         <h1 class="timerHead">New Pomodoro Task</h1>
         <br />
         <div class="taskinp">
-          Title:{" "}
-          <input onChange={e => this.setState({ title: e.target.value })} />
+        <TextField
+            id="outlined-name"
+            name="title"
+            label="Title"
+            className={this.classes.textField}
+            margin="normal"
+            variant="outlined"
+            onChange = {e => this.setState({ title: e.target.value })}
+          />
         </div>
         <br />
         <div class="taskinp">
-          Details:{" "}
-          <input onChange={e => this.setState({ details: e.target.value })} />
+        <TextField
+            id="outlined-name"
+            name="details"
+            label="Details"
+            className={this.classes.textField}
+            margin="normal"
+            variant="outlined"
+            onChange = {e => this.setState({ details: e.target.value })}
+          />
         </div>
         <Timer minutes={this.state.minutes} seconds={this.state.seconds} />
         <div class="mybutton">

@@ -1,0 +1,103 @@
+import React, { Component } from "react";
+import MenuBar from "./MenuBar";
+import firebase from "./Firebase";
+import "./App.css";
+import { makeStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    width: '100%',
+    marginTop: theme.spacing(3),
+    overflowX: 'auto',
+  },
+  table: {
+    minWidth: 650,
+  },
+}));
+
+var appUsers = [];
+var rows = [];
+
+class LeaderBoards extends Component {
+  classes = useStyles;
+  constructor(props) {
+    super(props);
+    this.state = {
+      mounted: false
+    };
+  }
+
+  componentDidMount() {
+    this.readFire();
+    this.setState({ mounted: true });
+  }
+
+  readFire = () => {
+    let users = [];
+    const usersRef = firebase.database().ref("users");
+
+    usersRef.on("value", function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        users.push(childSnapshot.val());
+      });
+
+      appUsers = [] // getting rid of the repeating info bug
+      rows = []
+      // for user in users
+      for (var i in users) {
+        // for task in completed tasks
+        appUsers.push({ name: Object.getOwnPropertyNames(snapshot.val())[i] });
+        let tasks = 0;
+        for (var task in users[i].completedTasks) {
+          tasks++;
+        }
+        appUsers[i].numTasks = tasks;
+        rows.push(this.createData(appUsers[i].name, appUsers[i].numTasks))
+      }
+    });
+  };
+
+  createData = (name, numTasks) => {
+      return {name, numTasks};
+  }
+
+  render() {
+    return (
+      <Paper className={this.classes.root}>
+        <Table className={this.classes.table}>
+          <TableHead>
+            <TableRow>
+              <TableCell>Name</TableCell>
+              <TableCell align="right">Number of Tasks</TableCell>
+            </TableRow>
+          </TableHead>
+          {this.state.mounted ? (
+          <TableBody>
+            {this.rows.map(row => (
+              <TableRow key={row.name}>
+                <TableCell component="th" scope="row">
+                  {row.name}
+                </TableCell>
+                <TableCell align="right">{row.numTasks}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+          ) : (        <TableBody>
+              <TableRow key="5">
+                <TableCell component="th" scope="row">
+                  Row Name
+                </TableCell>
+                <TableCell align="right">5</TableCell>
+              </TableRow>
+            )
+          </TableBody>)}
+        </Table>
+      </Paper>
+    );
+  }
