@@ -239,26 +239,26 @@ class NewTask extends Component {
         <h1 class="timerHead">New Pomodoro Task</h1>
         <br />
         <div class="taskinp">
-        <TextField
+          <TextField
             id="outlined-name"
             name="title"
             label="Title"
             className={this.classes.textField}
             margin="normal"
             variant="outlined"
-            onChange = {e => this.setState({ title: e.target.value })}
+            onChange={e => this.setState({ title: e.target.value })}
           />
         </div>
         <br />
         <div class="taskinp">
-        <TextField
+          <TextField
             id="outlined-name"
             name="details"
             label="Details"
             className={this.classes.textField}
             margin="normal"
             variant="outlined"
-            onChange = {e => this.setState({ details: e.target.value })}
+            onChange={e => this.setState({ details: e.target.value })}
           />
         </div>
         <Timer minutes={this.state.minutes} seconds={this.state.seconds} />
@@ -310,11 +310,7 @@ class NewTask extends Component {
             {/* <img src={require("./shia.gif")} /> */}
             <div>{randoGif}</div>
           </div>
-          {/* <Button variant="contained" size="large" color="primary">
-            <Link to="/Profile" class="toonLink">
-              Back to Profile
-            </Link>
-          </Button> */}
+          <h3>Click on Profile in the navigation to return to your profile!</h3>
         </div>
       </div>
     );

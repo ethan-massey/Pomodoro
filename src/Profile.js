@@ -113,6 +113,7 @@ class Profile extends Component {
   };
 
   render() {
+    console.log(this.state.userId.email);
     return (
       <div>
         <MenuBar />

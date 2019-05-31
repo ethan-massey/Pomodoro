@@ -136,6 +136,8 @@ h6 {
 
 .timerHead {
   font-size: 80px;
+  margin-top: -0.1px;
+  margin-bottom: -0.1px;
 }
 
 img {
