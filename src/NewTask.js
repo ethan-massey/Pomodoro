@@ -9,6 +9,8 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
+import axios from "axios";
+import TextField from "@material-ui/core/TextField";
 
 const useStyles = makeStyles(theme => ({
   margin: {
@@ -35,6 +37,7 @@ var date =
 const currDate = "Current Date= " + date;
 
 class NewTask extends Component {
+  classes = useStyles;
   constructor(props) {
     super(props);
     this.state = {
@@ -47,7 +50,8 @@ class NewTask extends Component {
       userId: firebase.auth().currentUser,
       title: "",
       details: "",
-      initialStart: false
+      initialStart: false,
+      gifs: []
     };
 
     this.startInitialCountdown = this.startInitialCountdown.bind(this);
@@ -207,21 +211,55 @@ class NewTask extends Component {
     ).innerHTML;
   };
 
-  // create a variable to keep track of wheter the current time is in break time or study time... maybe
+  getGif() {
+    // fetch("http://localhost:9000/")
+    //   .then(res => this.setState({ gifs: res }));
+
+    axios.get("http://localhost:9000/").then(res =>
+      this.setState({
+        gifs: res.data
+      })
+    );
+  }
+
+  componentDidMount() {
+    this.getGif();
+    console.log(this.state.gifs);
+  }
+
   render() {
+    let i = 0;
+    let mygifs = this.state.gifs.map(gif => {
+      return <img src={gif.images.original.url} />;
+    });
+    let randoGif = mygifs[Math.floor(Math.random() * mygifs.length)];
     return (
       <div>
         <MenuBar />
         <h1 class="timerHead">New Pomodoro Task</h1>
         <br />
         <div class="taskinp">
-          Title:{" "}
-          <input onChange={e => this.setState({ title: e.target.value })} />
+          <TextField
+            id="outlined-name"
+            name="title"
+            label="Title"
+            className={this.classes.textField}
+            margin="normal"
+            variant="outlined"
+            onChange={e => this.setState({ title: e.target.value })}
+          />
         </div>
         <br />
         <div class="taskinp">
-          Details:{" "}
-          <input onChange={e => this.setState({ details: e.target.value })} />
+          <TextField
+            id="outlined-name"
+            name="details"
+            label="Details"
+            className={this.classes.textField}
+            margin="normal"
+            variant="outlined"
+            onChange={e => this.setState({ details: e.target.value })}
+          />
         </div>
         <Timer minutes={this.state.minutes} seconds={this.state.seconds} />
         <div class="mybutton">
@@ -267,14 +305,12 @@ class NewTask extends Component {
         <div id="congrats" />
         <div id="shia" class="hiddenDiv">
           <h1>Mission Accomplished! Well done! Such amaze!</h1>
+
           <div class="shia">
-            <img src={require("./shia.gif")} />
+            {/* <img src={require("./shia.gif")} /> */}
+            <div>{randoGif}</div>
           </div>
-          <Button variant="contained" size="large" color="primary">
-            {/* <Link to="/Profile" class="toonLink">
-              Back to Profile
-            </Link> */}
-          </Button>
+          <h3>Click on Profile in the navigation to return to your profile!</h3>
         </div>
       </div>
     );
