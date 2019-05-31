@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import MenuBar from "./MenuBar";
 import firebase from "./Firebase";
 import "./App.css";
+import { isNull } from "util";
 
 var appUsers = [];
 
@@ -27,6 +28,7 @@ class LeaderBoards extends Component {
         users.push(childSnapshot.val());
       });
 
+      appUsers = [] // getting rid of the repeating info bug
       // for user in users
       for (var i in users) {
         // for task in completed tasks
