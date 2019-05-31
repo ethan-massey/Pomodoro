@@ -237,7 +237,10 @@ class NewTask extends Component {
       <div>
         <MenuBar />
         <h1 class="timerHead">New Pomodoro Task</h1>
-        <br />
+        <p>
+          The timer alternates between 25 minute grind sessions and 5 minute
+          breaks
+        </p>
         <div class="taskinp">
           <TextField
             id="outlined-name"
