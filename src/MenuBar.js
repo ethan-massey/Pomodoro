@@ -64,7 +64,7 @@ class MenuBar extends React.Component {
               </Button>
               <Button color="inherit">
                 <Link to="/LeaderBoards" class="toonLink">
-                  Leader Boards
+                  Leader Board
                 </Link>
               </Button>
               <Button color="inherit">
