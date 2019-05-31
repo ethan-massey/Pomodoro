@@ -15,18 +15,26 @@ import "./App.css";
 class App extends Component {
   render() {
     return (
-      <Router>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/Login" component={Login} />
-        <Route exact path="/CreateAccount" component={CreateAccount} />
-        <Route exact path="/Profile" component={Profile} />
-        <Route exact path="/NewTask" component={NewTask} />
+      <div>
+        <head>
+          <link
+            href="https://fonts.googleapis.com/css?family=Allerta+Stencil|Baloo"
+            rel="stylesheet"
+          />
+        </head>
+        <Router>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/Login" component={Login} />
+          <Route exact path="/CreateAccount" component={CreateAccount} />
+          <Route exact path="/Profile" component={Profile} />
+          <Route exact path="/NewTask" component={NewTask} />
 
-        <Route exact path="/LeaderBoards" component={LeaderBoards} />
+          <Route exact path="/LeaderBoards" component={LeaderBoards} />
 
-        <Route exact path="/Help" component={Help} />
-        {/* <Route exact path="/" component={Logout} /> */}
-      </Router>
+          <Route exact path="/Help" component={Help} />
+          {/* <Route exact path="/" component={Logout} /> */}
+        </Router>
+      </div>
     );
   }
 }
