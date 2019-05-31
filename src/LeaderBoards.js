@@ -10,12 +10,12 @@ class LeaderBoards extends Component {
     super(props);
     this.state = {
       mounted: false
-    }
+    };
   }
 
   componentDidMount() {
     this.readFire();
-    this.setState({mounted: true})
+    this.setState({ mounted: true });
   }
 
   readFire = () => {
@@ -36,7 +36,7 @@ class LeaderBoards extends Component {
           tasks++;
         }
         appUsers[i].numTasks = tasks;
-        console.log(appUsers)
+        console.log(appUsers);
       }
     });
   };
@@ -46,7 +46,17 @@ class LeaderBoards extends Component {
       <div>
         <MenuBar />
         <h6>LeaderBoard</h6>
-        {this.state.mounted ? <ul> {appUsers.map((info, index) => <li key={index}> Name: {info.name} Number of Tasks: {info.numTasks}</li>)}</ul> : <h2>nope!</h2>}
+        {this.state.mounted ? (
+          <ul>
+            {appUsers.map((info, index) => (
+              <li key={index}>
+                Name: {info.name} Number of Tasks: {info.numTasks}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <h2>nope!</h2>
+        )}
       </div>
     );
   }
