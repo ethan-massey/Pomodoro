@@ -47,6 +47,7 @@ class Help extends Component {
           <a
             target="_blank"
             href="https://en.wikipedia.org/wiki/Pomodoro_Technique"
+            class="helptag"
           >
             Read about it!
           </a>

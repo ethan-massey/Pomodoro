@@ -51,30 +51,31 @@ class MenuBar extends React.Component {
             <Typography variant="h6" className={this.classes.title}>
               Pomodoro
             </Typography>
-
-            <Button color="inherit">
-              <Link to="/Profile" class="toonLink">
-                Profile
-              </Link>
-            </Button>
-            <Button color="inherit">
-              <Link to="/NewTask" class="toonLink">
-                New Task
-              </Link>
-            </Button>
-            <Button color="inherit">
-              <Link to="/LeaderBoards" class="toonLink">
-                Leader Boards
-              </Link>
-            </Button>
-            <Button color="inherit">
-              <Link to="/Help" class="toonLink">
-                Help
-              </Link>
-            </Button>
-            <Button color="inherit" onClick={this.handleLogout}>
-              Logout
-            </Button>
+            <div class="menuItems">
+              <Button color="inherit">
+                <Link to="/Profile" class="toonLink">
+                  Profile
+                </Link>
+              </Button>
+              <Button color="inherit">
+                <Link to="/NewTask" class="toonLink">
+                  New Task
+                </Link>
+              </Button>
+              <Button color="inherit">
+                <Link to="/LeaderBoards" class="toonLink">
+                  Leader Boards
+                </Link>
+              </Button>
+              <Button color="inherit">
+                <Link to="/Help" class="toonLink">
+                  Help
+                </Link>
+              </Button>
+              <Button color="inherit" onClick={this.handleLogout}>
+                Logout
+              </Button>
+            </div>
           </Toolbar>
         </AppBar>
       </div>

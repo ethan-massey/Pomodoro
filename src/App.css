@@ -68,14 +68,6 @@ h2 {
     2px 2px 0 #000;
 }
 
-h6 {
-  text-align: center;
-  font-size: 65px;
-  color: whitesmoke;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
-    2px 2px 0 #000;
-}
-
 .mybutton {
   display: flex;
   justify-content: space-around;
@@ -99,6 +91,7 @@ h6 {
 
 .profileHead {
   font-size: 80px;
+  margin-bottom: -1px;
 }
 
 .user {
@@ -148,4 +141,34 @@ img {
 .leaderHead {
   margin-top: -1px;
   margin-bottom: -1px;
+  text-align: center;
+}
+
+* {
+  font-family: "Baloo", cursive;
+}
+
+.mymenu {
+  /* text-align: right; */
+}
+
+h6 {
+  /* text-align: center; */
+  font-size: 65px;
+  color: whitesmoke;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    2px 2px 0 #000;
+}
+
+.menuItems {
+  margin-left: 850px;
+  text-align: right;
+}
+
+.scoreHead {
+  margin-left: 500px;
+}
+
+.helptag {
+  color: #3f51b5;
 }
