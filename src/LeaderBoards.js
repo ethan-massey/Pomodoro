@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import MenuBar from "./MenuBar";
 import firebase from "./Firebase";
 import "./App.css";
-import { isNull } from "util";
 
 var appUsers = [];
 
@@ -28,7 +27,7 @@ class LeaderBoards extends Component {
         users.push(childSnapshot.val());
       });
 
-      appUsers = [] // getting rid of the repeating info bug
+      appUsers = []; // getting rid of the repeating info bug
       // for user in users
       for (var i in users) {
         // for task in completed tasks
@@ -47,15 +46,15 @@ class LeaderBoards extends Component {
     return (
       <div>
         <MenuBar />
-        <h6>LeaderBoard</h6>
+        <h6>Leader Board</h6>
         {this.state.mounted ? (
-          <ul>
+          <h3>
             {appUsers.map((info, index) => (
-              <li key={index}>
+              <li>
                 Name: {info.name} Number of Tasks: {info.numTasks}
               </li>
             ))}
-          </ul>
+          </h3>
         ) : (
           <h2>nope!</h2>
         )}
