@@ -5,8 +5,19 @@ import { Input } from "antd";
 import Timer from "./Timer";
 import StartButton from "./StartButton";
 import firebase from "./Firebase.js";
+import Button from "@material-ui/core/Button";
+import { makeStyles } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
+import { withRouter } from "react-router";
 
-// const { TextArea } = Input;
+const useStyles = makeStyles(theme => ({
+  margin: {
+    margin: theme.spacing(1)
+  },
+  extendedIcon: {
+    marginRight: theme.spacing(1)
+  }
+}));
 
 var tempDate = new Date();
 var date =
@@ -35,9 +46,11 @@ class NewTask extends Component {
       breakTime: false,
       userId: firebase.auth().currentUser,
       title: "",
-      details: ""
+      details: "",
+      initialStart: false
     };
 
+    this.startInitialCountdown = this.startInitialCountdown.bind(this);
     this.startCountdown = this.startCountdown.bind(this);
     this.tick = this.tick.bind(this);
     this.stopCountdown = this.stopCountdown.bind(this);
@@ -69,7 +82,7 @@ class NewTask extends Component {
     }
 
     if ((min === 0) & (sec === 0)) {
-      clearInterval(this.intervalHandle); // if break startBreak else startCountdown
+      clearInterval(this.intervalHandle);
       if (this.state.breakTime) {
         // console.log("starting countdown");
         this.setState({
@@ -91,7 +104,9 @@ class NewTask extends Component {
   }
 
   startCountdown() {
-    console.log(this.state.on);
+    console.log("fuck me");
+    // console.log(this.state.on);
+    // this.disableButton();
     // if (this.state.on) {
     this.setState({
       breakTime: false,
@@ -103,6 +118,28 @@ class NewTask extends Component {
     let time = this.state.minutes;
     this.secondsRemaining = time * 60;
     // }
+  }
+
+  startInitialCountdown() {
+    console.log("initial start");
+    if (this.state.initialStart === false) {
+      // console.log(this.state.on);
+      console.log("yo" + this.state.initialStart);
+      // this.disableButton();
+      // if (this.state.on) {
+      this.setState({
+        breakTime: false,
+        on: true,
+        initialStart: true
+      });
+      console.log("yoyo" + this.state.initialStart);
+      //   console.log("startCountdown");
+      //   console.log(this.state.breakTime);
+      this.intervalHandle = setInterval(this.tick, 1000);
+      let time = this.state.minutes;
+      this.secondsRemaining = time * 60;
+      // }
+    }
   }
 
   stopCountdown() {
@@ -175,7 +212,7 @@ class NewTask extends Component {
     return (
       <div>
         <MenuBar />
-        <h1>New Pomodoro Task</h1>
+        <h1 class="timerHead">New Pomodoro Task</h1>
         <br />
         <div class="taskinp">
           Title:{" "}
@@ -186,28 +223,45 @@ class NewTask extends Component {
           Details:{" "}
           <input onChange={e => this.setState({ details: e.target.value })} />
         </div>
-        <br />
-        <br />
-        <br />
         <Timer minutes={this.state.minutes} seconds={this.state.seconds} />
         <div class="mybutton">
-          <StartButton start={this.startCountdown} />
+          <StartButton start={this.startInitialCountdown} id="startb" />
         </div>
         <br />
         <div class="mybutton">
+          <Button
+            onClick={this.stopCountdown}
+            variant="contained"
+            size="large"
+            color="primary"
+          >
+            Pause
+          </Button>
+          <Button
+            onClick={this.resumeCountdown}
+            variant="contained"
+            size="large"
+            color="primary"
+          >
+            Resume
+          </Button>
+        </div>
+        {/* <div class="mybutton">
           <button class="buttonBar" onClick={this.stopCountdown}>
             Pause
           </button>
           <button onClick={this.resumeCountdown}>Resume</button>
-        </div>
+        </div> */}
         <br />
         <div class="mybutton">
-          <button
-            //   onClick={() => this.stopCountdown()}
-            onClick={() => this.handleClick()}
+          <Button
+            onClick={this.handleClick}
+            variant="contained"
+            size="large"
+            color="primary"
           >
-            Finished with Task
-          </button>
+            Finish and Submit Job
+          </Button>
         </div>
         <br />
         <div id="congrats" />
@@ -216,6 +270,11 @@ class NewTask extends Component {
           <div class="shia">
             <img src={require("./shia.gif")} />
           </div>
+          <Button variant="contained" size="large" color="primary">
+            {/* <Link to="/Profile" class="toonLink">
+              Back to Profile
+            </Link> */}
+          </Button>
         </div>
       </div>
     );

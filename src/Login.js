@@ -4,26 +4,26 @@ import firebase from "./Firebase";
 import { Link } from "react-router-dom";
 import "./App.css";
 
-import { makeStyles } from '@material-ui/core/styles';
-import MenuItem from '@material-ui/core/MenuItem';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button'
+import { makeStyles } from "@material-ui/core/styles";
+import MenuItem from "@material-ui/core/MenuItem";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles(theme => ({
   container: {
-    display: 'flex',
-    flexWrap: 'wrap',
+    display: "flex",
+    flexWrap: "wrap"
   },
   textField: {
     marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
+    marginRight: theme.spacing(1)
   },
   dense: {
-    marginTop: theme.spacing(2),
+    marginTop: theme.spacing(2)
   },
   menu: {
-    width: 200,
-  },
+    width: 200
+  }
 }));
 
 class Login extends Component {
@@ -44,33 +44,44 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <h1>Log in to Pomodoro</h1>
-        <form class="login" className={this.classes.container} noValidate autoComplete="off" onSubmit={this.handleLogin}>
-      <TextField
-        id="outlined-name"
-        name="email"
-        label="Email"
-        type="email"
-        className={this.classes.textField}
-        margin="normal"
-        variant="outlined"
-      />
-            <TextField
-        id="outlined-name"
-        name="password"
-        label="Password"
-        type="password"
-        className={this.classes.textField}
-        margin="normal"
-        variant="outlined"
-      />
-      <Button type="submit">Log in</Button>
-      </form>
-      <div class="login">
-        <Button>
-          <Link to="/">Back</Link>
-        </Button>
-      </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <h1 class="loginHead">Log in to Pomodoro</h1>
+        <form
+          class="login"
+          className={this.classes.container}
+          noValidate
+          autoComplete="off"
+          onSubmit={this.handleLogin}
+        >
+          <TextField
+            id="outlined-name"
+            name="email"
+            label="Email"
+            type="email"
+            className={this.classes.textField}
+            margin="normal"
+            variant="outlined"
+          />
+          <TextField
+            id="outlined-name"
+            name="password"
+            label="Password"
+            type="password"
+            className={this.classes.textField}
+            margin="normal"
+            variant="outlined"
+          />
+          <Button type="submit">Log in</Button>
+        </form>
+        <div class="login">
+          <Button>
+            <Link to="/">Back</Link>
+          </Button>
+        </div>
       </div>
     );
   }
