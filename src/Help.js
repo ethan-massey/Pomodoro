@@ -28,7 +28,7 @@ class Help extends Component {
   handleDelete = async event => {
     event.preventDefault();
     try {
-      const user = await firebase.auth().delete();
+      const user = await firebase.auth().currentUser.delete();
       this.props.history.push("/");
     } catch (error) {
       alert(error);
