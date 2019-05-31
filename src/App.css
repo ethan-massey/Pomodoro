@@ -142,3 +142,8 @@ img {
   height: 500px;
   width: 600px;
 }
+
+.leaderHead {
+  margin-top: -1px;
+  margin-bottom: -1px;
+}
