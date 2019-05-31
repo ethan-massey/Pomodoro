@@ -45,6 +45,7 @@ const styles = {
 class Profile extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       userId: firebase.auth().currentUser,
       userStats: [],
@@ -121,7 +122,7 @@ class Profile extends Component {
         <div class="user">
           <Chip
             icon={<FaceIcon />}
-            label={firebase.auth().currentUser.email}
+            label={this.state.userId.email}
             clickable
             color="primary"
             variant="outlined"

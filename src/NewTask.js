@@ -9,6 +9,7 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
+import axios from "axios";
 
 const useStyles = makeStyles(theme => ({
   margin: {
@@ -47,7 +48,8 @@ class NewTask extends Component {
       userId: firebase.auth().currentUser,
       title: "",
       details: "",
-      initialStart: false
+      initialStart: false,
+      gifs: []
     };
 
     this.startInitialCountdown = this.startInitialCountdown.bind(this);
@@ -207,8 +209,28 @@ class NewTask extends Component {
     ).innerHTML;
   };
 
-  // create a variable to keep track of wheter the current time is in break time or study time... maybe
+  getGif() {
+    // fetch("http://localhost:9000/")
+    //   .then(res => this.setState({ gifs: res }));
+
+    axios.get("http://localhost:9000/").then(res =>
+      this.setState({
+        gifs: res.data
+      })
+    );
+  }
+
+  componentDidMount() {
+    this.getGif();
+    console.log(this.state.gifs);
+  }
+
   render() {
+    let i = 0;
+    let mygifs = this.state.gifs.map(gif => {
+      return <img src={gif.images.original.url} />;
+    });
+    let randoGif = mygifs[Math.floor(Math.random() * mygifs.length)];
     return (
       <div>
         <MenuBar />
@@ -267,14 +289,16 @@ class NewTask extends Component {
         <div id="congrats" />
         <div id="shia" class="hiddenDiv">
           <h1>Mission Accomplished! Well done! Such amaze!</h1>
+
           <div class="shia">
-            <img src={require("./shia.gif")} />
+            {/* <img src={require("./shia.gif")} /> */}
+            <div>{randoGif}</div>
           </div>
-          <Button variant="contained" size="large" color="primary">
-            {/* <Link to="/Profile" class="toonLink">
+          {/* <Button variant="contained" size="large" color="primary">
+            <Link to="/Profile" class="toonLink">
               Back to Profile
-            </Link> */}
-          </Button>
+            </Link>
+          </Button> */}
         </div>
       </div>
     );
