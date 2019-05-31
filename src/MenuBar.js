@@ -48,15 +48,10 @@ class MenuBar extends React.Component {
       <div className={this.classes.root}>
         <AppBar position="static">
           <Toolbar>
-            <IconButton
-              edge="start"
-              className={this.classes.menuButton}
-              color="inherit"
-              aria-label="Menu"
-            />
             <Typography variant="h6" className={this.classes.title}>
               Pomodoro
             </Typography>
+
             <Button color="inherit">
               <Link to="/Profile" class="toonLink">
                 Profile
